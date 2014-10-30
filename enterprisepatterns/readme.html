@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<title>Design Patterns: Enterprise</title>
+	</head>
+	<body>
+		<h1>Since these are all so interrelated I am going to wrap them all in one project and make notes here...</h1>
+		<h4>Design Pattern: Registry (includes/edp/base/registry.php)</h4>
+		<ul>
+			<li>An expansion on the Singleton pattern used to centralize common objects/functions (AKA globals).</li>
+			<li>Divided into three classes to separate scope (request, session, application)</li>
+			<li>Normally would use the request and either session or application but not both</li>
+		</ul>
+		<h4>Design Pattern: Command (includes/edp/command/Command.php)</h4>
+		<ul>
+			<li>This has actually been covered in its own demo but is used heavily here.</li>
+			<li>The CommandResolver (includes/edp/command/commandresolver.php) serves as a command factory 
+				for the Front Controller. This is a basic solution that directly links commands to views. This
+				is fine for small systems but not flexible enough for larger or more complex systems.
+			</li>
+		</ul>
+		<h4>Design Pattern: Front Controller (includes/edp/controller/controller.php)</h4>
+		<ul>
+			<li>While the controller itself is fairly basic it will most likely need helper classes to support it.</li>
+			<li>CommandResolver is a Command factory for the Controller</li>
+			<li>Request (includes/edp/controller/request.php) wraps the PHP globals and allows us control over the data.</li>
+			<li>ApplicationHelper (includes/edp/controller/applicationhelper.php) provides access to configuration data.</li>
+		</ul>
+		<h4>Design Pattern: Application Controller (includes/edp/controller/controller.php)</h4>
+		<ul>
+			<li>Replaces the CommandResolver allowing multiple commands to be executed and more dynamic view logic.</li>
+		</ul>
+	</body>
+</html>
